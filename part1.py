@@ -6,6 +6,8 @@
 
 class DFA:
     print("Please enter a file")
+    countone = 0
+    counttwo = 0
     input = input()
     # Loop through file and delete newline characters
     with open(input, 'r') as file:
@@ -13,17 +15,21 @@ class DFA:
 
     i = 0
     j = 3
+    print("Start State")
     for char in data:
-        print("Start State")
         # Start to process "105102" even num of times
         if data[i:j] == '105':
             print("State Q1")
             i += 3
             j += 3
             if data[i:j] == '102':
-                print("State Q2")
-                i += 3
-                j += 3
+                if (countone % 2) == 0:
+                    print("State Q2")
+                    i += 3
+                    j += 3
+                    countone += 1
+                else:
+                    print("REJECT")
 
         # Start to process "119104105108101" odd number of times
         if data[i:j] == '119':
@@ -43,8 +49,13 @@ class DFA:
                         i += 3
                         j += 3
                         if data[i:j] == '101':
-                            print("ACCEPT")
-                            exit(0)
+                            counttwo += 1 
+                            if (counttwo % 2) != 0:
+                                print("ACCEPT")
+                                #exit(0)
+                            else:
+                                print("REJECT")
 
-    print("REJECT")
+    if (countone % 2) != 0 or (counttwo % 2) == 0:
+        print("REJECT")
 
