@@ -58,12 +58,14 @@ class DFA:
                             counttwo += 1 
                             if (counttwo % 2) != 0:
                                 print("ACCEPT")
-                                #exit(0)
+                                exit(0)
                             else:
                                 print("REJECT")
 
-        i += 3
-        j += 4
+        else:
+            print("Start State")
+            i += 3
+            j += 4
 
     if (countone % 2) != 0 and (counttwo % 2) == 0:
         print("REJECT")
