@@ -4,6 +4,11 @@
 
 #Output should be a sequence of states that the machine goes through; an output of ACCEPT or REJECT depending on the input string.
 
+
+# The if statements in this program are the transitions when fulfilled
+# and prints indicate the current state you are in. 
+# The end of the loop prints whether the word you are processing is a 
+# part of the language or not. 
 class DFA:
     print("Please enter a file")
     countone = 0
@@ -30,6 +35,7 @@ class DFA:
                     countone += 1
                 else:
                     print("REJECT")
+                    exit()
 
         # Start to process "119104105108101" odd number of times
         if data[i:j] == '119':
@@ -56,6 +62,10 @@ class DFA:
                             else:
                                 print("REJECT")
 
-    if (countone % 2) != 0 or (counttwo % 2) == 0:
-        print("REJECT")
+        i += 3
+        j += 4
 
+    if (countone % 2) != 0 and (counttwo % 2) == 0:
+        print("REJECT")
+    if (countone % 2) == 0 or (counttwo % 2) == 0:
+        print("REJECT")
