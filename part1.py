@@ -28,30 +28,38 @@ class DFA:
             i += 3
             j += 3
             if data[i:j] == '102':
-                if (countone % 2) == 0:
-                    print("State Q2")
-                    i += 3
-                    j += 3
-                    countone += 1
-                else:
-                    print("REJECT")
-                    exit()
-
-        # Start to process "119104105108101" odd number of times
-        if data[i:j] == '119':
-            print("State Q3")
-            i += 3
-            j += 3
-            if data[i:j] == '104':
-                print("State Q4")
+                print("State Q2")
                 i += 3
                 j += 3
                 if data[i:j] == '105':
-                    print("State Q5")
+                    print("State Q3")
+                    i += 3
+                    j += 3
+                    if data[i:j] == '102':
+                        if (countone % 2) == 0:
+                            print("Start State")
+                            i += 3
+                            j += 3
+                            countone += 1
+                        else:
+                            print("REJECT")
+                            exit()
+
+        # Start to process "119104105108101" odd number of times
+        if data[i:j] == '119':
+            print("State Q4")
+            i += 3
+            j += 3
+            if data[i:j] == '104':
+                print("State Q5")
+                i += 3
+                j += 3
+                if data[i:j] == '105':
+                    print("State Q6")
                     i += 3
                     j += 3
                     if data[i:j] == '108':
-                        print("State Q6")
+                        print("State Q7")
                         i += 3
                         j += 3
                         if data[i:j] == '101':
