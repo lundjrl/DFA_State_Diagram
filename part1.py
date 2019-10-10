@@ -23,7 +23,7 @@ class DFA:
     print("Start State")
     length = int(len(data) / 3)
     print(length)
-    for char in range(0, length, 3):
+    for char in range(0, len(data), 3):
         # Start to process "105102" even num of times
         if data[i:j] == '105':
             print("State Q1")
@@ -45,7 +45,7 @@ class DFA:
                         countone += 1
 
         # Start to process "119104105108101" odd number of times
-        elif data[i:j] == '119':
+        if data[i:j] == '119':
             print("State Q4")
             i += 3
             j += 3
@@ -67,14 +67,14 @@ class DFA:
                             i += 3
                             j += 3
 
-        elif data[i:j] == '':
+        if data[i:j] == '':
             if (countone % 2) == 0 and (counttwo % 2) != 0:
                 print("ACCEPT")
-            elif (countone % 2) == 0 or (counttwo % 2) == 0:
+                exit(0)
+            else:
                 print("REJECT")
-            elif (counttwo % 2) == 0 and (countone % 2) != 0:
-                print("REJECT")           
-        else:
+                exit(0)
+        if data[i:j] != '':
             print("Start State")
             i += 3
             j += 3
