@@ -21,7 +21,9 @@ class DFA:
     i = 0
     j = 3
     print("Start State")
-    for char in data:
+    length = int(len(data) / 3)
+    print(length)
+    for char in range(0, length, 3):
         # Start to process "105102" even num of times
         if data[i:j] == '105':
             print("State Q1")
@@ -31,22 +33,19 @@ class DFA:
                 print("State Q2")
                 i += 3
                 j += 3
+                countone += 1
                 if data[i:j] == '105':
                     print("State Q3")
                     i += 3
                     j += 3
                     if data[i:j] == '102':
-                        if (countone % 2) == 0:
-                            print("Start State")
-                            i += 3
-                            j += 3
-                            countone += 1
-                        else:
-                            print("REJECT")
-                            exit()
+                        print("Start State")
+                        i += 3
+                        j += 3
+                        countone += 1
 
         # Start to process "119104105108101" odd number of times
-        if data[i:j] == '119':
+        elif data[i:j] == '119':
             print("State Q4")
             i += 3
             j += 3
@@ -64,18 +63,24 @@ class DFA:
                         j += 3
                         if data[i:j] == '101':
                             counttwo += 1 
-                            if (counttwo % 2) != 0:
-                                print("ACCEPT")
-                                exit(0)
-                            else:
-                                print("REJECT")
+                            print("State Q8")
+                            i += 3
+                            j += 3
+                            #if (counttwo % 2) != 0 and (countone % 2) == 0:
+                            #    print("ACCEPT")
+                            #    exit(0)
+                            #else:
+                            #    print("REJECT")
+                            #    exit(0)
 
         else:
             print("Start State")
             i += 3
             j += 4
 
-    if (countone % 2) != 0 and (counttwo % 2) == 0:
+    if (countone % 2) == 0 and (counttwo % 2) != 0:
+        print("ACCEPT")
+    elif (countone % 2) == 0 or (counttwo % 2) == 0:
         print("REJECT")
-    if (countone % 2) == 0 or (counttwo % 2) == 0:
+    elif (counttwo % 2) == 0 and (countone % 2) != 0:
         print("REJECT")
