@@ -49,6 +49,10 @@ class DFA:
             print("State Q4")
             i += 3
             j += 3
+            if data[i:j] == '119':
+                print("State Q4")
+                i += 3
+                j += 3
             if data[i:j] == '104':
                 print("State Q5")
                 i += 3
