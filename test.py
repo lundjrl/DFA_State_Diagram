@@ -45,7 +45,7 @@ class DFA:
                         countone += 1
 
         # Start to process "119104105108101" odd number of times
-        elif data[i:j] == '119':
+        if data[i:j] == '119':
             print("State Q4")
             i += 3
             j += 3
@@ -66,16 +66,22 @@ class DFA:
                             print("State Q8")
                             i += 3
                             j += 3
+                            #if (counttwo % 2) != 0 and (countone % 2) == 0:
+                            #    print("ACCEPT")
+                            #    exit(0)
+                            #else:
+                            #    print("REJECT")
+                            #    exit(0)
 
-        elif data[i:j] == '':
-            if (countone % 2) == 0 and (counttwo % 2) != 0:
-                print("ACCEPT")
-            elif (countone % 2) == 0 or (counttwo % 2) == 0:
-                print("REJECT")
-            elif (counttwo % 2) == 0 and (countone % 2) != 0:
-                print("REJECT")           
         else:
             print("Start State")
             i += 3
             j += 3
+
+    if (countone % 2) == 0 and (counttwo % 2) != 0:
+        print("ACCEPT")
+    elif (countone % 2) == 0 or (counttwo % 2) == 0:
+        print("REJECT")
+    elif (counttwo % 2) == 0 and (countone % 2) != 0:
+        print("REJECT")
 
